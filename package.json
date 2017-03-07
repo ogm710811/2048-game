@@ -1,0 +1,23 @@
+{
+  "name": "2048game",
+  "version": "1.0.0",
+  "description": "The game's objective is to slide numbered tiles on a grid to combine them to create a tile with the number 2048.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogm710811/2048-game.git"
+  },
+  "keywords": [
+    "2048",
+    "game"
+  ],
+  "author": "Orestes Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ogm710811/2048-game/issues"
+  },
+  "homepage": "https://github.com/ogm710811/2048-game#readme"
+}
