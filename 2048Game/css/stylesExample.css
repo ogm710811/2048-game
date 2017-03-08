@@ -5,6 +5,21 @@ body {
   margin: 0;
   padding: 0;
 }
+h3 {
+  display:none;
+}
+.show-lost {
+  height: 50px;
+  color: white;
+  background-color: red;
+  display: block;
+}
+.show-won {
+  height: 50px;
+  color: #A1A;
+  background-color: green;
+  display: block;
+}
 
 #game-board {
   background: #3582b8;

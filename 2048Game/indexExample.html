@@ -1,18 +1,21 @@
 <html>
 <head>
   <title>2048</title>
-  <link rel="stylesheet" href="css/stylesExample.css">
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="js/indexExample.js"></script>
+  <script type="text/javascript" src="ion.sound-3.0.7/ion.sound.min.js"></script>
+  <script src="js/index.js"></script>
 </head>
 <body>
+  <center>
   <h1>2048</h1>
+  <h3 id="game-over">Game OVER</h3>
   <div id="score">
   Score: <span class="js-score">0</span>
   </div>
   <div id="game-board">
     <div id="tile-container">
-      <div class="tile tile-position-0-0 val-2">2</div>
+      <!-- <div class="tile tile-position-0-0 val-2">2</div>
       <div class="tile tile-position-0-1 val-4">4</div>
       <div class="tile tile-position-0-2 val-8">8</div>
       <div class="tile tile-position-0-3 val-16">16</div>
@@ -30,7 +33,7 @@
       <div class="tile tile-position-3-0"></div>
       <div class="tile tile-position-3-1"></div>
       <div class="tile tile-position-3-2"></div>
-      <div class="tile tile-position-3-3"></div>
+      <div class="tile tile-position-3-3"></div> -->
     </div>
     <div class="row">
       <div class="cell"></div>
@@ -62,5 +65,6 @@
 
     <div class="clearfix"></div>
   </div>
+</center>
 </body>
 </html>

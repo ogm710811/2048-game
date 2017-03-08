@@ -1,3 +1,16 @@
+// Load sounds from ion.sound.min.js
+function loadSounds () {
+  ion.sound({
+    // Installing snap, and tap
+    sounds: [{name: "snap"}, {name: "tap"}],
+
+    path: "../ion.sound-3.0.7/sounds/",
+    // path: "lib/sounds/",
+    preload: true,
+    volume: 1.0
+  });
+}
+
 // 2048 Game Model Logic
 function Game2048() {
   this.board = [
@@ -69,6 +82,7 @@ Game2048.prototype._moveLeft = function () {
     for(i = 0; i < newRow.length - 1; i++) {
       // If the next element equals the current element
       if (newRow[i+1] === newRow[i]) {
+        ion.sound.play("tap");
         // Current index equals new Row multiplied by 2
         newRow[i]   = newRow[i] * 2;
         // Set next element to null.
@@ -118,6 +132,7 @@ Game2048.prototype._moveRight = function () {
     for (i=newRow.length - 1; i>0; i--) {
       // If previous element eqauls current element
       if (newRow[i-1] === newRow[i]) {
+        ion.sound.play("tap");
         // Set the current index to the multiple of itself by 2
         newRow[i]   = newRow[i] * 2;
         // Emtpy the previous index contents
@@ -249,22 +264,111 @@ Game2048.prototype._isGameLost = function () {
   this.lost = isLost;
 };
 
+// ------------------------------------------------
+// View Logic
+// ------------------------------------------------
+
+function renderTiles () {
+  // For each row on the board
+  game.board.forEach(function(row, rowIndex){
+    // For each cell in the row
+    row.forEach(function (cell, cellIndex) {
+      // If there is cell
+      if (cell) {
+        // Assign titleContainer to element with id of tile-container
+        var tileContainer = document.getElementById("tile-container");
+        // Assign newTile to created div.
+        var newTile       = document.createElement("div");
+
+        // Update the class with dynamic data for behavior
+        newTile.classList  = "tile val-" + cell;
+        newTile.classList += " tile-position-" + rowIndex + "-" + cellIndex;
+        newTile.innerHTML  = (cell);
+
+        //Append new Tile to the tile container
+        tileContainer.appendChild(newTile);
+      }
+    });
+  });
+}
+
+// Updates the score
+function updateScore () {
+  // Stores the current game score
+  var score          = game.score;
+  // Grabs elements by js-score class name
+  var scoreContainer = document.getElementsByClassName("js-score");
+  // Convert the scoreContainer to an array,
+  // For each span in the score container
+  Array.prototype.slice.call(scoreContainer).forEach(function (span) {
+    // Update the span with scrore.
+    span.innerHTML = score;
+  });
+}
+
+// Check the game status
+function gameStatus () {
+  if (game.won) {
+    console.log('YOU WON!');
+    document.getElementById("game-over").classList = "show-won";
+    document.getElementById("game-over").innerHTML = "YOU WON";
+  } else if (game.lost) {
+    console.log('YOU LOST, WOMP');
+    document.getElementById("game-over").classList = "show-lost";
+    document.getElementById("game-over").innerHTML = "YOU LOST";
+  }
+}
+
+// Keyboard move listener
+function moveListeners (event) {
+  ion.sound.play("snap");
+  // keys that represent movement
+  var keys = [37, 38, 39, 40];
+
+  // If there is no keyCode on this event, then return nothing
+  if (keys.indexOf(event.keyCode) < 0)
+    return;
+
+  // Based on the keyCode recieved, execute move accordingly.
+  switch (event.keyCode) {
+    case 37: game.move("left");  break;
+    case 38: game.move("up");    break;
+    case 39: game.move("right"); break;
+    case 40: game.move("down");  break;
+  }
+  console.log("Rendering the current board: ");
+  game._renderBoard();
+  // Reset the Tiles
+  resetTiles();
+  // Render Tiles with the update
+  renderTiles();
+  // Update the score on every valid keyboard event.
+  updateScore();
+  // Update the game status on every keyboard event.
+  gameStatus();
+}
+
+// Reset Tiles
+function resetTiles () {
+  // Target the tiles container based on id.
+  var tilesContainer = document.getElementById("tile-container");
+
+  // Grab all the tiles off the tilesContainer.
+  var tiles          = tilesContainer.getElementsByClassName("tile");
+
+  //Convert the node collection into an Array so that we can iterate.
+  Array.prototype.slice.call(tiles).forEach(function (tile) {
+    // Remove the child from the tiles container.
+    tilesContainer.removeChild(tile);
+  });
+}
+
+document.addEventListener("keydown", moveListeners);
+
 // Interaction Logic
 $(document).ready(function(){
-  var game = new Game2048();
-  console.log('Initial Board')
-  game._renderBoard();
-  console.log('===move up===')
-  game.move("up");
-  game._renderBoard();
-  console.log('===move down===')
-  game.move("down");
-  game._renderBoard();
-  console.log('===move left===')
-  game.move("left");
-  game._renderBoard();
-  console.log('===move right===')
-  game.move("right");
-  game._renderBoard();
-  console.log('Game is ready');
-})
+  game = new Game2048();
+  loadSounds();
+  // render the tiles to the DOM
+  renderTiles();
+});

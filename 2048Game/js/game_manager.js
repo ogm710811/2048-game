@@ -106,6 +106,7 @@ Game2048.prototype._moveLeft = function () {
     // for three tiles with values “2, 2, 2” will be “4, 2” instead of “2, 4”.
     for(i = 0; i < newRow.length - 1; i++) {
       if (newRow[i+1] === newRow[i]) {
+        //ion.sound.play("tap");
         newRow[i]   = newRow[i] * 2;
         newRow[i+1] = null;
 
@@ -156,6 +157,7 @@ Game2048.prototype._moveRight = function () {
 
     for (i=newRow.length - 1; i>0; i--) {
       if (newRow[i-1] === newRow[i]) {
+        //ion.sound.play("tap");
         newRow[i]   = newRow[i] * 2;
         newRow[i-1] = null;
 
@@ -234,6 +236,7 @@ Game2048.prototype._moveDown = function () {
 //**********************************************************************
 
 Game2048.prototype._move = function (direction) {
+  //ion.sound.play("snap");
   if (!this._gameFinished()) {
     switch (direction) {
       case "up":    boardChanged = this._moveUp();    break;
@@ -340,28 +343,28 @@ Game2048.prototype._isGameLost = function () {
 // INTERACTION LOGIC
 //**********************************************************************
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-  var game = new Game2048();
-  console.log('Initial Board');
-  game._renderBoard();
+//   var game = new Game2048();
+//   console.log('Initial Board');
+//   game._renderBoard();
 
-  console.log('===move up===');
-  game._move("up");
-  game._renderBoard();
+//   console.log('===move up===');
+//   game._move("up");
+//   game._renderBoard();
 
-  console.log('===move down===');
-  game._move("down");
-  game._renderBoard();
+//   console.log('===move down===');
+//   game._move("down");
+//   game._renderBoard();
 
-  console.log('===move left===');
-  game._move("left");
-  game._renderBoard();
+//   console.log('===move left===');
+//   game._move("left");
+//   game._renderBoard();
 
-  console.log('===move right===');
-  game._move("right");
-  game._renderBoard();
+//   console.log('===move right===');
+//   game._move("right");
+//   game._renderBoard();
 
-  console.log('Game is ready');
+//   console.log('Game is ready');
 
-});
+// });

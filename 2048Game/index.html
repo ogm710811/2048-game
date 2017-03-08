@@ -11,12 +11,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="js/index.js"></script>
+        <!--<script type="text/javascript" src="ion.sound-3.0.7/ion.sound.min.js"></script>-->
+        <script src="js/application.js"></script>
+        <script src="js/game_manager.js"></script>
     </head>
     <body>
-        <div class="title">
-            <h1>2048</h1>
-        </div>
+        <center>
+        <h1>2048</h1>
+        <h3 id="game-over"></h3>
         <div id="score">
             Score: <span class="js-score">0</span>
         </div>
@@ -55,7 +57,7 @@
         position: absolute property. All the tiles inside this 
         container will seem to be over the board.-->
         <div id="tile-container">
-            <div class="tile tile-position-0-0 val-2">2</div>
+            <!--<div class="tile tile-position-0-0 val-2">2</div>
             <div class="tile tile-position-0-1 val-4">4</div>
             <div class="tile tile-position-0-2 val-8">8</div>
             <div class="tile tile-position-0-3 val-16">16</div>
@@ -73,9 +75,10 @@
             <div class="tile tile-position-3-0"></div>
             <div class="tile tile-position-3-1"></div>
             <div class="tile tile-position-3-2"></div>
-            <div class="tile tile-position-3-3"></div>
+            <div class="tile tile-position-3-3"></div>-->
         </div>
         <div class="clearfix"></div>
-        </div>       
+        </div> 
+        </center>      
     </body>
 </html>
