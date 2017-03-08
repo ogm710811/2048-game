@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>2048 Game</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="ion.sound-3.0.7/ion.sound.min.js"></script>-->
+        <script src="js/application.js"></script>
+        <script src="js/game_manager.js"></script>
+    </head>
+    <body>
+        <center>
+        <h1>2048</h1>
+        <h3 id="game-over"></h3>
+        <div id="score">
+            Score: <span class="js-score">0</span>
+        </div>
+        <div id="game-board">        
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+
+        <!--Adding the tiles to the board. Each div for each available 
+        tile position. To put tiles over the board, we create another 
+        container with the same dimensions, and put it over the #game-board through the
+        position: absolute property. All the tiles inside this 
+        container will seem to be over the board.-->
+        <div id="tile-container">
+            <!--<div class="tile tile-position-0-0 val-2">2</div>
+            <div class="tile tile-position-0-1 val-4">4</div>
+            <div class="tile tile-position-0-2 val-8">8</div>
+            <div class="tile tile-position-0-3 val-16">16</div>
+
+            <div class="tile tile-position-1-0 val-32">32</div>
+            <div class="tile tile-position-1-1 val-64">64</div>
+            <div class="tile tile-position-1-2 val-128">128</div>
+            <div class="tile tile-position-1-3 val-256">256</div>
+
+            <div class="tile tile-position-2-0 val-512">512</div>
+            <div class="tile tile-position-2-1 val-1024">1024</div>
+            <div class="tile tile-position-2-2 val-2048">2048</div>
+            <div class="tile tile-position-2-3"></div>
+
+            <div class="tile tile-position-3-0"></div>
+            <div class="tile tile-position-3-1"></div>
+            <div class="tile tile-position-3-2"></div>
+            <div class="tile tile-position-3-3"></div>-->
+        </div>
+        <div class="clearfix"></div>
+        </div> 
+        </center>      
+    </body>
+</html>
